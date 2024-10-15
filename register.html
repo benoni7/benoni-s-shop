@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+           <a href="index.html"> <img class="pic" src="logo.png"></a>
+        </div>
+        <div class="account-cart">
+            <div class="account">
+                <p>Hello, Sign in</p>
+                <p>Account & Lists</p>
+            </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Registration Form Section -->
+    <section class="register-container">
+        <h2>Create Your Account</h2>
+        <form id="register-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Sign In</a></p>
+    </section>
+
+    <script src="register.js"></script>
+</body>
+<style>
+    /* Registration Form */
+    .pic{
+        width: 60px;
+        border-radius: 30px;
+    }
+.register-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.register-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #4cae4c;
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+</style>
+<script>
+    document.getElementById('register-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const confirmPassword = document.getElementById('confirm-password').value.trim();
+
+    if (!name || !email || !password || !confirmPassword) {
+        alert('Please fill in all the fields.');
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+    }
+
+    // Store user data (example, you may want to store it in localStorage or send to a server)
+    const user = {
+        name: name,
+        email: email,
+        password: password // Normally, passwords should be encrypted before storing/sending
+    };
+
+    // Example: Save user data to localStorage (just for this example)
+    localStorage.setItem('user', JSON.stringify(user));
+
+    alert('Registration successful!');
+    
+    // Redirect to login page (you can change this as per your site structure)
+    window.location.href = 'login.html';
+});
+</script>
+</html>

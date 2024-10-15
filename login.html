@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <a href="index.html"><img class="pic" src="logo.png"></a>
+        </div>
+        <div class="account-cart">
+            <div class="account">
+                <p>Hello, Sign in</p>
+                <p>Account & Lists</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Form Section -->
+    <section class="login-container">
+        <h2>Sign In to Your Account</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p>New to Shop? <a href="register.html">Create an Account</a></p>
+    </section>
+
+    <script src="login.js"></script>
+    <style>
+        /* Login Form */
+.pic{
+    width: 60px;
+    border-radius: 30px;
+}
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #4cae4c;
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+    </style>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    // Retrieve user data from localStorage (for this example)
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+    // Validate login credentials
+    if (storedUser && storedUser.email === email && storedUser.password === password) {
+        alert('Login successful!');
+        
+        // Redirect to homepage or user dashboard
+        window.location.href = 'index.html'; // Change to the appropriate page
+    } else {
+        alert('Invalid email or password. Please try again.');
+    }
+});
+    </script>
+</body>
+</html>

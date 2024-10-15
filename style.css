@@ -1,0 +1,187 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+/* Header styling */
+header {
+    background-color: #131921;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 24px;
+}
+
+.search-bar {
+    display: flex;
+    width: 50%;
+}
+
+.search-bar input {
+    width: 80%;
+    padding: 10px;
+    border: none;
+}
+
+.search-bar button {
+    padding: 10px 15px;
+    background-color: #febd69;
+    border: none;
+    cursor: pointer;
+}
+
+.account-cart {
+    display: flex;
+    align-items: center;
+}
+
+.account {
+    margin-right: 20px;
+    text-align: right;
+}
+
+.account p {
+    margin: 5px 0;
+}
+
+.cart {
+    position: relative;
+    cursor: pointer;
+}
+
+.cart span {
+    background-color: #f08804;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}
+
+/* Navigation styling */
+nav {
+    background-color: #232f3e;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Product grid styling */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: white;
+}
+
+.product {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+}
+
+.product p {
+    margin: 10px 0;
+}
+
+.product button {
+    background-color: #f08804;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Cart Page Styling */
+.cart-container {
+    padding: 20px;
+    background-color: white;
+}
+
+.cart-container h2 {
+    margin-bottom: 20px;
+}
+
+#cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-summary {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkout-btn {
+    background-color: #f08804;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Pop-up animation */
+@keyframes popUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Initially hidden */
+.product {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Class to trigger the pop-up animation */
+.pop-up {
+    animation: popUp 0.6s forwards;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .search-bar {
+        width: 70%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+}

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <a href="index.html"><img class="pic" src="logo.png"></a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products">
+            <button>Search</button>
+        </div>
+        <div class="account-cart">
+            <div class="account">
+                <p>Hello, Sign in</p>
+                <p>Account & Lists</p>
+            </div>
+            <div class="cart">
+                <a href="cart.html">
+                    <p>Cart</p>
+                    <span id="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Items Section -->
+    <section class="cart-container">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div class="cart-summary">
+            <p>Total: $<span id="cart-total">0.00</span></p>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </section>
+
+    <script src="cart.js"></script>
+    <style>
+        /* General styling */
+.pic{
+    width: 60px;
+    border-radius: 30px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+/* Header styling */
+header {
+    background-color: #131921;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 24px;
+}
+
+.search-bar {
+    display: flex;
+    width: 50%;
+}
+
+.search-bar input {
+    width: 80%;
+    padding: 10px;
+    border: none;
+}
+
+.search-bar button {
+    padding: 10px 15px;
+    background-color: #febd69;
+    border: none;
+    cursor: pointer;
+}
+
+.account-cart {
+    display: flex;
+    align-items: center;
+}
+
+.account {
+    margin-right: 20px;
+    text-align: right;
+}
+
+.account p {
+    margin: 5px 0;
+}
+
+.cart {
+    position: relative;
+    cursor: pointer;
+}
+
+.cart span {
+    background-color: #f08804;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}
+
+/* Navigation styling */
+nav {
+    background-color: #232f3e;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Product grid styling */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: white;
+}
+
+.product {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+}
+
+.product p {
+    margin: 10px 0;
+}
+
+.product button {
+    background-color: #f08804;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Cart Page Styling */
+.cart-container {
+    padding: 20px;
+    background-color: white;
+}
+
+.cart-container h2 {
+    margin-bottom: 20px;
+}
+
+#cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-summary {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkout-btn {
+    background-color: #f08804;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .search-bar {
+        width: 70%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+    </style>
+    <script>
+        // Retrieve cart from local storage
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Display cart items
+const cartItemsElement = document.getElementById('cart-items');
+const cartTotalElement = document.getElementById('cart-total');
+
+let total = 0;
+
+cart.forEach(item => {
+    const cartItem = document.createElement('div');
+    cartItem.classList.add('cart-item');
+    cartItem.innerHTML = `
+        <p>${item.name}</p>
+        <p>$${item.price.toFixed(2)}</p>
+    `;
+    cartItemsElement.appendChild(cartItem);
+    total += item.price;
+});
+
+//
+
+    </script>
+</body>
+</html>
